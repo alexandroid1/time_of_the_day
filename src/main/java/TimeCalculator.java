@@ -1,4 +1,5 @@
 import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * Created by ALEX on 02.04.2016.
@@ -43,5 +44,9 @@ public class TimeCalculator {
 
     public void print(){
         System.out.println(getTimeOfTheDay());
+    }
+
+    public String getDefaultLocale() {
+        return Locale.getDefault().toString();
     }
 }
