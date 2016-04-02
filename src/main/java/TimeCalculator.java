@@ -7,6 +7,10 @@ public class TimeCalculator {
 
     private int hours;
 
+    TimeCalculator(){
+
+    }
+
     public int getHours() {
         return hours;
     }
@@ -22,8 +26,10 @@ public class TimeCalculator {
         this.hours= calendar.get(Calendar.HOUR_OF_DAY);
     }
 
-    public void getTimeOfTheDay(int hours)
+    public void getTimeOfTheDay()
     {
+        getTime();
+
         if (hours > 6 && hours <= 9 ) {
             System.out.println("Good morning, World!");
         } else if (hours > 9 && hours <= 19 ) {
@@ -36,13 +42,4 @@ public class TimeCalculator {
 
     }
 
-
-
-/*    Calendar cal = Calendar.getInstance();
-    cal.  (date);
-    int hour = cal.get(Calendar.HOUR_OF_DAY);
-    int minutes = cal.get(Calendar.MINUTE);
-    if (hour == 10 && minutes >= 30 || hour == 11 && minutes <= 30) {
-        ...
-    }*/
 }
