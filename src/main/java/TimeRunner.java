@@ -5,7 +5,7 @@ public class TimeRunner {
 
     public static void main(String[] args) {
         TimeCalculator calculator = new TimeCalculator();
-        calculator.getTimeOfTheDay();
+        calculator.print();
     }
 
 }

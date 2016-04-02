@@ -8,7 +8,6 @@ public class TimeCalculator {
     private int hours;
 
     TimeCalculator(){
-
     }
 
     public int getHours() {
@@ -26,20 +25,23 @@ public class TimeCalculator {
         this.hours= calendar.get(Calendar.HOUR_OF_DAY);
     }
 
-    public void getTimeOfTheDay()
+    public String getTimeOfTheDay()
     {
         getTime();
 
         if (hours > 6 && hours <= 9 ) {
-            System.out.println("Good morning, World!");
+            return "Good morning, World!";
         } else if (hours > 9 && hours <= 19 ) {
-            System.out.println("Good day, World!");
+            return "Good day, World!";
         } else if (hours > 19 && hours <= 23 ) {
-            System.out.println("Good evening, World!");
+            return "Good evening, World!";
         } else if (hours > 23 && hours <= 24 || hours >= 0 && hours <= 6 ) {
-            System.out.println("Good night, World!");
+            return "Good night, World!";
         }
-
+        return "Good night, World!";
     }
 
+    public void print(){
+        System.out.println(getTimeOfTheDay());
+    }
 }
