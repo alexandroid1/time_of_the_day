@@ -8,9 +8,6 @@ public class TimeRunner {
     public static void main(String[] args) {
         TimeCalculator calculator = new TimeCalculator();
         calculator.print();
-
-        System.out.println(Locale.getDefault().toString());
-
     }
 
 }
