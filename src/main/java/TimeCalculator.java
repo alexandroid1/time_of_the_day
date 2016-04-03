@@ -45,8 +45,13 @@ public class TimeCalculator {
     public void print(){
 
         String string = getTimeOfTheDay();
+        byte[] data;
         try {
-            byte[] data = string.getBytes("ISO-8859-1");
+            if (getDefaultLocale().equals("ru_RU")) {
+                data = string.getBytes("ISO-8859-1");
+            } else {
+                data = string.getBytes("UTF-8");
+            }
             String str = new String(data);
             System.out.println(str);
         } catch (UnsupportedEncodingException e) {
