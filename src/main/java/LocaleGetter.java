@@ -5,8 +5,12 @@ import java.util.Locale;
  */
 public class LocaleGetter {
 
-    public String getDefaultLocale() {
+    private String locale;
+
+    public static String getDefaultLocale() {
         return Locale.getDefault().toString();
     }
+
+
 
 }

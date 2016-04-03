@@ -1,5 +1,11 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Properties;
 
 /**
  * Created by ALEX on 02.04.2016.
@@ -7,16 +13,9 @@ import java.util.Locale;
 public class TimeCalculator {
 
     private int hours;
+    private Properties properties;
 
     TimeCalculator(){
-    }
-
-    public int getHours() {
-        return hours;
-    }
-
-    public void setHours(int hours) {
-        this.hours = hours;
     }
 
     public void getTime()
@@ -29,24 +28,50 @@ public class TimeCalculator {
     public String getTimeOfTheDay()
     {
         getTime();
+        getPropertyByLocale();
 
         if (hours > 6 && hours <= 9 ) {
-            return "Good morning, World!";
+            return properties.getProperty("morning");
         } else if (hours > 9 && hours <= 19 ) {
-            return "Good day, World!";
+            return properties.getProperty("day");
         } else if (hours > 19 && hours <= 23 ) {
-            return "Good evening, World!";
+            return properties.getProperty("evening");
         } else if (hours > 23 && hours <= 24 || hours >= 0 && hours <= 6 ) {
-            return "Good night, World!";
+            return properties.getProperty("night");
         }
-        return "Good night, World!";
+        return properties.getProperty("night");
     }
 
     public void print(){
-        System.out.println(getTimeOfTheDay());
+
+        String string = getTimeOfTheDay();
+        try {
+            byte[] data = string.getBytes("ISO-8859-1");
+            String str = new String(data);
+            System.out.println(str);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getDefaultLocale() {
         return Locale.getDefault().toString();
+    }
+
+    public void getPropertyByLocale() {
+        FileInputStream fis;
+        Properties property = new Properties();
+
+        try {
+            String filePath = "./src/main/resources/"+getDefaultLocale()+".properties";
+            fis = new FileInputStream(filePath);
+            property.load(fis);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        properties = property;
     }
 }
